@@ -1,5 +1,5 @@
-Package: com.ccnetlink.wechathelper
-Name: WeChat Helper
+Package: com.ccnetlink.dchelper
+Name: DC Helper
 Version: 1.0.0
 Architecture: iphoneos-arm64
 Description: 微信增强插件，类似黄白助手。支持防撤回、消息增强等（需越狱或注入器）。

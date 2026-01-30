@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>title</key>
-	<string>DC-Helper</string>
+	<string>DC Helper</string>
 	<key>items</key>
 	<array>
 		<dict>
@@ -18,13 +18,13 @@
 			<key>default</key>
 			<true/>
 			<key>defaults</key>
-			<string>com.ccnetlink.wechathelper</string>
+			<string>com.ccnetlink.dchelper</string>
 			<key>key</key>
 			<string>RevokeEnabled</string>
 			<key>label</key>
 			<string>防撤回</string>
 			<key>PostNotification</key>
-			<string>com.ccnetlink.wechathelper/ReloadPrefs</string>
+			<string>com.ccnetlink.dchelper/ReloadPrefs</string>
 		</dict>
 		<dict>
 			<key>cell</key>
