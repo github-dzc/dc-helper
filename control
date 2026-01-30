@@ -1,0 +1,14 @@
+Package: com.ccnetlink.wechathelper
+Name: WeChat Helper
+Version: 1.0.0
+Architecture: iphoneos-arm64
+Description: 微信增强插件，类似黄白助手。支持防撤回、消息增强等（需越狱或注入器）。
+ 功能包括：
+ - 消息防撤回
+ - 双击复读
+ - 可扩展更多增强
+Depends: mobilesubstrate, preferenceloader
+Maintainer: ccnetlink
+Author: ccnetlink
+Section: Tweaks
+Homepage: https://github.com/ccnetlink/ccnetlink-test
