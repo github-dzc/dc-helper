@@ -53,6 +53,23 @@ sudo git clone --recursive https://github.com/theos/theos.git /opt/theos
 sudo git clone --recursive https://github.com/theos/theos.git $THEOS  # 需先 export THEOS=/path
 ```
 
+**必装依赖（macOS）**：
+
+- **ldid**：编译时给 dylib 签名，未安装会报 `ldid: command not found`。
+- **xz**：打 deb 包时用于压缩，未安装会报 `lzma: No such file or directory`（dm.pl 会调用 `lzma`）。
+
+```bash
+brew install ldid xz
+```
+
+若安装 xz 后仍提示找不到 `lzma`，可创建软链（将 `$(which xz)` 所在目录换成你的实际路径）：
+
+```bash
+sudo ln -sf $(which xz) /usr/local/bin/lzma
+```
+
+若未安装 Homebrew，可先执行 [Homebrew 安装脚本](https://brew.sh)，再执行上述命令。
+
 ---
 
 ### 方式二：Windows 下用 WSL 编译（可用）
@@ -113,7 +130,7 @@ make package
 
 生成产物：
 
-- **dylib**：`theos/obj/debug/WeChatHelper.dylib`
+- **dylib**：`.theos/obj/debug/WeChatHelper.dylib`（注意是隐藏目录 `.theos`）
 - **deb 包**：`packages/com.ccnetlink.wechathelper_1.0.0_iphoneos-arm64.deb`（路径以实际 THEOS 输出为准）
 
 ## 安装方式
@@ -126,6 +143,8 @@ make package
    dpkg -i com.ccnetlink.wechathelper_1.0.0_iphoneos-arm64.deb
    ```
 3. 重启微信或执行 `killall -9 WeChat` 使插件生效。
+
+**若安装时报错「Read-only file system」或「error creating directory 'Library/MobileSubstrate'」**：说明设备是 **根less 越狱**（Dopamine、palera1n rootless 等）。本仓库 Makefile 已默认使用 `PREFIX=/var/jb`，打出的 deb 会安装到 `/var/jb/Library/...`，请用当前仓库重新执行 `make clean && make package` 再安装新生成的 deb。若你是**传统（rootful）越狱**，需打包时指定：`make package PREFIX=/`。
 
 ### 方式二：免越狱（注入器）
 
