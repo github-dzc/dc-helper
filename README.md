@@ -144,7 +144,14 @@ make package
    ```
 3. 重启微信或执行 `killall -9 WeChat` 使插件生效。
 
-**若安装时报错「Read-only file system」或「error creating directory 'Library/MobileSubstrate'」**：说明设备是 **根less 越狱**（Dopamine、palera1n rootless 等）。本仓库 Makefile 已默认使用 `PREFIX=/var/jb`，打出的 deb 会安装到 `/var/jb/Library/...`，请用当前仓库重新执行 `make clean && make package` 再安装新生成的 deb。若你是**传统（rootful）越狱**，需打包时指定：`make package PREFIX=/`。
+**若安装时报错「Read-only file system」或「error creating directory 'Library/MobileSubstrate'」**：说明设备是 **根less 越狱**。本仓库已默认使用 Theos 官方 **rootless** 方案（`THEOS_PACKAGE_SCHEME=rootless`），打出的 deb 会安装到 `/var/jb`，直接执行：
+
+```bash
+make clean
+make package
+```
+
+即可。若你是**传统（rootful）越狱**，需在 Makefile 里注释掉 `export THEOS_PACKAGE_SCHEME = rootless` 这一行，然后 `make clean && make package`。
 
 ### 方式二：免越狱（注入器）
 
